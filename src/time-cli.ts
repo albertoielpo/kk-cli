@@ -18,7 +18,9 @@ export class TimeCli {
                 console.log(d.toISOString());
                 break;
             default:
-                console.warn(`invalid timeFormat. Try one of [${TimeFormats}]`);
+                console.warn(
+                    `invalid time format. try one of [${TimeFormats}]`
+                );
                 break;
         }
     }

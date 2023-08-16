@@ -20,7 +20,7 @@ export class TransformCli {
                 break;
             default:
                 console.warn(
-                    `invalid action '${action}'. Try one of [${Base64Actions}]`
+                    `invalid action '${action}'. try one of [${Base64Actions}]`
                 );
                 break;
         }

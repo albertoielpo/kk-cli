@@ -30,9 +30,9 @@ program
     .action(RandomCli.str);
 
 program
-    .command("int [length]")
+    .command("int [digits]")
     .description(
-        "generate pseudo-random integer. Length define max character. If invalid then max is used as default. `kk int 5`"
+        "generate pseudo-random integer. Length define max digits. If invalid then max is used as default. `kk int 5`"
     )
     .action(RandomCli.int);
 

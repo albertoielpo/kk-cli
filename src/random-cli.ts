@@ -31,12 +31,13 @@ export class RandomCli {
     /**
      * Generate pseudo-random integer
      */
-    public static int(length: number) {
+    public static int(maxDigitsArgs: number) {
         const number = Math.random().toString().split(".")[1];
-        if (length == null || length < 0 || isNaN(length)) {
+        const maxDigits = Number(maxDigitsArgs);
+        if (isNaN(maxDigits) || maxDigits < 0) {
             console.log(Number(number));
         } else {
-            console.log(Number(number.substring(0, length)));
+            console.log(Number(number.substring(0, maxDigits)));
         }
     }
 }
