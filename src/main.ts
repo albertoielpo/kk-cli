@@ -6,7 +6,9 @@ import { RandomAction } from "./actions/random.action";
 import { TimeAction } from "./actions/time.action";
 import { TransformAction } from "./actions/transform.action";
 
-/** redirect console.warn and console.error to console.log colored with chalk */
+/**
+ * redirect console.warn and console.error to console.log colored with chalk
+ */
 console.warn = (data: unknown) => {
     console.log(chalk.yellow(data));
 };
@@ -14,6 +16,9 @@ console.error = (data: unknown) => {
     console.log(chalk.red(data));
 };
 
+/**
+ * commander configuration
+ */
 program
     .command("uuid")
     .description("generate random uuid. `kk uuid`")
@@ -55,4 +60,5 @@ program
     )
     .action(NetworkAction.scan);
 
+/** apply */
 program.parse();

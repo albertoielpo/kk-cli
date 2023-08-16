@@ -31,7 +31,7 @@ export class RandomAction {
     /**
      * Generate pseudo-random integer
      */
-    public static int(maxDigitsArgs: number) {
+    public static int(maxDigitsArgs?: number) {
         const number = Math.random().toString().split(".")[1];
         const maxDigits = Number(maxDigitsArgs);
         if (isNaN(maxDigits) || maxDigits < 0) {
