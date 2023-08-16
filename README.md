@@ -18,9 +18,12 @@ Launch: `kk --help`
 
 Development watch mode: `npm run watch`
 
-## Example
+## Test
+Test: `npm run test`
+
+## Examples
 - Generate uuid `kk uuid`
 - Generate mongoid `kk mongoid`
 - Show current timestamp `kk time`
 - Encode to base64 `kk base64 encode some_data`
-- Check if a host:port is available `kk scan npmjs.com 80`
+- Check if a host:port is available `kk scan localhost 80`

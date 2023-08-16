@@ -1,8 +1,8 @@
 {
     "name": "@albertoielpo/kk-cli",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "Typescript commander CLI",
-    "main": "index.js",
+    "main": "main.js",
     "bin": {
         "kk": "dist/main.js"
     },

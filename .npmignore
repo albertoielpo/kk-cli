@@ -1,0 +1,11 @@
+# npmignore
+!dist/
+src/
+test/
+.github
+.vscode
+node_modules
+.prettierignore
+.prettierrc
+tsconfig.build.json
+tsconfig.json
