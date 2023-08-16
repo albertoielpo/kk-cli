@@ -7,10 +7,10 @@ import { TimeCli } from "./time-cli";
 import { TransformCli } from "./transform-cli";
 
 /** redirect console.warn and console.error to console.log colored with chalk */
-console.warn = (data) => {
+console.warn = (data: unknown) => {
     console.log(chalk.yellow(data));
 };
-console.error = (data) => {
+console.error = (data: unknown) => {
     console.log(chalk.red(data));
 };
 
