@@ -1,15 +1,26 @@
 # kk cli
 
-A simple command line interface with personal most used commands.
+A simple command line interface with my personal most used commands.
 
-Requires node 18.16
+Source code: <a href="https://github.com/albertoielpo/kk-cli" target="_blank">Github</a>
 
-Credits: <a href="https://blog.logrocket.com/creating-a-cli-tool-with-node-js/" target="_blank">Creating a cli tool with node js</a>
+## Install from npm
+Install: `npm i -g @albertoielpo/kk-cli`
+## Install from source
 
-## Brief
+Git repo: `git clone https://github.com/albertoielpo/kk-cli.git`
 
 Install: `npm i -g`
 
+Launch: `kk --help`
+
+## Development mode
+
 Development watch mode: `npm run watch`
 
-Launch: `kk --help`
+## Example
+- Generate uuid `kk uuid`
+- Generate mongoid `kk mongoid`
+- Show current timestamp `kk time`
+- Encode to base64 `kk base64 encode some_data`
+- Check if a host:port is available `kk scan npmjs.com 80`
