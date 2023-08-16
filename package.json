@@ -1,7 +1,7 @@
 {
-    "name": "kk-cli",
+    "name": "@albertoielpo/kk-cli",
     "version": "1.0.0",
-    "description": "My personal cli! kk-cli",
+    "description": "Typescript commander CLI",
     "main": "index.js",
     "bin": {
         "kk": "dist/main.js"
@@ -12,7 +12,10 @@
         "format": "prettier --write \"src/**/*.ts\"",
         "test": "jest"
     },
-    "keywords": [],
+    "keywords": [
+        "kk-cli",
+        "commander"
+    ],
     "author": "Alberto Ielpo",
     "license": "ISC",
     "dependencies": {
