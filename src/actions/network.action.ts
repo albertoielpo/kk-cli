@@ -3,7 +3,7 @@ import { checkPortStatus } from "portscanner";
 /**
  * @author Alberto Ielpo
  */
-export class NetworkCli {
+export class NetworkAction {
     /**
      * Scan a port range given an host and a comma separated ports
      *

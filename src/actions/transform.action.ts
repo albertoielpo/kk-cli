@@ -4,7 +4,7 @@ type Base64Action = (typeof Base64Actions)[number];
 /**
  * @author Alberto Ielpo
  */
-export class TransformCli {
+export class TransformAction {
     /**
      * encode / decode base64 data
      * @param action

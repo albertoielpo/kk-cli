@@ -1,10 +1,10 @@
 #! /usr/bin/env node
 import * as chalk from "chalk";
 import { program } from "commander";
-import { NetworkCli } from "./network-cli";
-import { RandomCli } from "./random-cli";
-import { TimeCli } from "./time-cli";
-import { TransformCli } from "./transform-cli";
+import { NetworkAction } from "./actions/network.action";
+import { RandomAction } from "./actions/random.action";
+import { TimeAction } from "./actions/time.action";
+import { TransformAction } from "./actions/transform.action";
 
 /** redirect console.warn and console.error to console.log colored with chalk */
 console.warn = (data: unknown) => {
@@ -17,42 +17,42 @@ console.error = (data: unknown) => {
 program
     .command("uuid")
     .description("generate random uuid. `kk uuid`")
-    .action(RandomCli.uuid);
+    .action(RandomAction.uuid);
 
 program
     .command("mongoid")
     .description("generate random mongoid. `kk mongoid`")
-    .action(RandomCli.mongoId);
+    .action(RandomAction.mongoId);
 
 program
     .command("str")
     .description("generate pseudo-random string. `kk str`")
-    .action(RandomCli.str);
+    .action(RandomAction.str);
 
 program
     .command("int [digits]")
     .description(
         "generate pseudo-random integer. Length define max digits. If invalid then max is used as default. `kk int 5`"
     )
-    .action(RandomCli.int);
+    .action(RandomAction.int);
 
 program
     .command("time [format]")
     .description(
         "display current time using format (timestamp, iso8601). `kk time iso8601`"
     )
-    .action(TimeCli.time);
+    .action(TimeAction.time);
 
 program
     .command("base64 <action> <data>")
     .description("encode/decode base64 text. `kk base64 encode text`")
-    .action(TransformCli.base64);
+    .action(TransformAction.base64);
 
 program
     .command("scan <host> <port>")
     .description(
         "network scan host and a command separated ports. `kk scan localhost 3000,3001`"
     )
-    .action(NetworkCli.scan);
+    .action(NetworkAction.scan);
 
 program.parse();

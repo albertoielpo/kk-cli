@@ -4,7 +4,7 @@ type TimeFormat = (typeof TimeFormats)[number];
 /**
  * @author Alberto Ielpo
  */
-export class TimeCli {
+export class TimeAction {
     /**
      * Print current timestamp in milliseconds
      */

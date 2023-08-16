@@ -4,7 +4,7 @@ import { Types } from "mongoose";
 /**
  * @author Alberto Ielpo
  */
-export class RandomCli {
+export class RandomAction {
     /**
      * Generate random uuid
      */
