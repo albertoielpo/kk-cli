@@ -1,6 +1,9 @@
 const Base64Actions = ["encode", "decode"] as const;
 type Base64Action = (typeof Base64Actions)[number];
 
+/**
+ * @author Alberto Ielpo
+ */
 export class TransformCli {
     /**
      * encode / decode base64 data
@@ -16,8 +19,8 @@ export class TransformCli {
                 console.log(Buffer.from(data, "base64").toString("utf-8"));
                 break;
             default:
-                console.log(
-                    `error: invalid action '${action}'. Try one of [${Base64Actions}]`
+                console.warn(
+                    `invalid action '${action}'. Try one of [${Base64Actions}]`
                 );
                 break;
         }

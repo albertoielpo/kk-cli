@@ -1,6 +1,9 @@
 import { randomUUID } from "crypto";
 import { Types } from "mongoose";
 
+/**
+ * @author Alberto Ielpo
+ */
 export class RandomCli {
     /**
      * Generate random uuid

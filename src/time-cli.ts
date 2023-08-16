@@ -1,6 +1,9 @@
 const TimeFormats = ["timestamp", "iso8601"] as const;
 type TimeFormat = (typeof TimeFormats)[number];
 
+/**
+ * @author Alberto Ielpo
+ */
 export class TimeCli {
     /**
      * Print current timestamp in milliseconds
@@ -15,9 +18,7 @@ export class TimeCli {
                 console.log(d.toISOString());
                 break;
             default:
-                console.log(
-                    `error: invalid timeFormat. Try one of [${TimeFormats}]`
-                );
+                console.warn(`invalid timeFormat. Try one of [${TimeFormats}]`);
                 break;
         }
     }
