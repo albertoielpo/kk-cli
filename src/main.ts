@@ -41,7 +41,7 @@ program
     .action(TimeCli.time);
 
 program
-    .command("b64 <action> <data>")
+    .command("base64 <action> <data>")
     .description("encode/decode base64 text")
     .action(TransformCli.base64);
 
