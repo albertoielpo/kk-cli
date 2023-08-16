@@ -1,17 +1,8 @@
 #! /usr/bin/env node
 import { program } from "commander";
-import { readdir } from "fs/promises";
 import { RandomCli } from "./random-cli";
 import { TimeCli } from "./time-cli";
 import { TransformCli } from "./transform-cli";
-
-async function ls(path: string = ".") {
-    const res = await readdir(path);
-    console.log(res);
-}
-
-//[optional arg]<mandatory arg>
-program.command("ls [path]").description("ls linux command").action(ls);
 
 program
     .command("uuid")
