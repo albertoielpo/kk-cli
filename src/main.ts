@@ -16,40 +16,42 @@ console.error = (data) => {
 
 program
     .command("uuid")
-    .description("generate random uuid")
+    .description("generate random uuid. `kk uuid`")
     .action(RandomCli.uuid);
 
 program
     .command("mongoid")
-    .description("generate random mongoid")
+    .description("generate random mongoid. `kk mongoid`")
     .action(RandomCli.mongoId);
 
 program
     .command("str")
-    .description("generate pseudo-random string")
+    .description("generate pseudo-random string. `kk str`")
     .action(RandomCli.str);
 
 program
     .command("int [length]")
     .description(
-        "generate pseudo-random integer. Length define max character. If invalid then max is used as default"
+        "generate pseudo-random integer. Length define max character. If invalid then max is used as default. `kk int 5`"
     )
     .action(RandomCli.int);
 
 program
     .command("time [format]")
-    .description("display current time using format (timestamp, iso8601)")
+    .description(
+        "display current time using format (timestamp, iso8601). `kk time iso8601`"
+    )
     .action(TimeCli.time);
 
 program
     .command("base64 <action> <data>")
-    .description("encode/decode base64 text")
+    .description("encode/decode base64 text. `kk base64 encode text`")
     .action(TransformCli.base64);
 
 program
     .command("scan <host> <port>")
     .description(
-        "network scan host and a command separated ports. usage: scan localhost 3000,3001 "
+        "network scan host and a command separated ports. `kk scan localhost 3000,3001`"
     )
     .action(NetworkCli.scan);
 
