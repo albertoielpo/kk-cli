@@ -6,6 +6,9 @@ import { RandomAction } from "./actions/random.action";
 import { TimeAction } from "./actions/time.action";
 import { TransformAction } from "./actions/transform.action";
 
+/** Same as package.json */
+const VERSION = "1.0.3-dev";
+
 /**
  * redirect console.warn and console.error to console.log colored with chalk
  */
@@ -54,11 +57,11 @@ program
     .action(TransformAction.base64);
 
 program
-    .command("scan <host> <port>")
+    .command("scans <host> <port>")
     .description(
         "network scan host and a command separated ports. `kk scan localhost 3000,3001`"
     )
     .action(NetworkAction.scan);
 
 /** apply */
-program.parse();
+program.version(VERSION).parse();

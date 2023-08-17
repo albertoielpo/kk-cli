@@ -5,7 +5,9 @@ A simple command line interface with my personal most used commands.
 Source code: <a href="https://github.com/albertoielpo/kk-cli" target="_blank">Github</a>
 
 ## Install from npm
+
 Install: `npm i -g @albertoielpo/kk-cli`
+
 ## Install from source
 
 Git repo: `git clone https://github.com/albertoielpo/kk-cli.git`
@@ -18,12 +20,18 @@ Launch: `kk --help`
 
 Development watch mode: `npm run watch`
 
+Execute from the root: `kk.sh <command> [args]`
+
+Version: `./kk.sh --version`
+
 ## Test
+
 Test: `npm run test`
 
 ## Examples
-- Generate uuid `kk uuid`
-- Generate mongoid `kk mongoid`
-- Show current timestamp `kk time`
-- Encode to base64 `kk base64 encode some_data`
-- Check if a host:port is available `kk scan localhost 80`
+
+-   Generate uuid `kk uuid`
+-   Generate mongoid `kk mongoid`
+-   Show current timestamp `kk time`
+-   Encode to base64 `kk base64 encode some_data`
+-   Check if a host:port is available `kk scan localhost 80`
