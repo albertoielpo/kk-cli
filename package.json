@@ -22,17 +22,17 @@
         "chalk": "~4.1.2",
         "commander": "~11.0.0",
         "conf": "~11.0.2",
-        "jest": "~29.6.1",
         "mongoose": "~7.4.3",
-        "portscanner": "~2.2.0",
-        "ts-jest": "~29.1.1"
+        "portscanner": "~2.2.0"
     },
     "devDependencies": {
         "@types/jest": "~29.5.2",
         "@types/node": "~18.16.1",
         "@types/portscanner": "~2.1.1",
         "prettier": "~3.0.2",
-        "typescript": "~5.1.6"
+        "typescript": "~5.1.6",
+        "jest": "~29.6.1",
+        "ts-jest": "~29.1.1"
     },
     "jest": {
         "moduleFileExtensions": [
