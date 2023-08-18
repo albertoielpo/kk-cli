@@ -1,6 +1,7 @@
 #! /usr/bin/env node
 import * as chalk from "chalk";
 import { program } from "commander";
+import { ClipboardAction } from "./actions/clipboard.action";
 import { NetworkAction } from "./actions/network.action";
 import { RandomAction } from "./actions/random.action";
 import { TimeAction } from "./actions/time.action";
@@ -62,6 +63,11 @@ program
         "network scan host and a command separated ports. `kk scan localhost 3000,3001`"
     )
     .action(NetworkAction.scan);
+
+program
+    .command("c2c <filename>")
+    .description("Copy file to clipboard")
+    .action(ClipboardAction.c2c);
 
 /** apply */
 program.version(VERSION).parse();
