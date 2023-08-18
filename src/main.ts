@@ -57,7 +57,7 @@ program
     .action(TransformAction.base64);
 
 program
-    .command("scans <host> <port>")
+    .command("scan <host> <port>")
     .description(
         "network scan host and a command separated ports. `kk scan localhost 3000,3001`"
     )
