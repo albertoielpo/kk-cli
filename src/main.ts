@@ -2,7 +2,9 @@
 import * as chalk from "chalk";
 import { program } from "commander";
 import { ClipboardAction } from "./actions/clipboard.action";
+import { KillProgramAction } from "./actions/kill-program.action";
 import { NetworkAction } from "./actions/network.action";
+import { PidInfoAction } from "./actions/pid-info.action";
 import { RandomAction } from "./actions/random.action";
 import { TimeAction } from "./actions/time.action";
 import { TransformAction } from "./actions/transform.action";
@@ -66,8 +68,22 @@ program
 
 program
     .command("c2c <filename>")
-    .description("Copy file to clipboard")
+    .description("Copy file to clipboard. `kk c2c filename`")
     .action(ClipboardAction.c2c);
+
+program
+    .command("pid <arg> [match_any]")
+    .description(
+        "Get pid info. Arg could be the program name or the pid number. If match_any is set then name match is not strict. `kk pid program_name` || `kk pid 12076`"
+    )
+    .action(PidInfoAction.getInfo);
+
+program
+    .command("kill <arg>")
+    .description(
+        "Kill program. Arg could be the exact program name or the pid number. `kk kill program_name` || `kk kill 12076`"
+    )
+    .action(KillProgramAction.kill);
 
 /** apply */
 program.version(VERSION).parse();
