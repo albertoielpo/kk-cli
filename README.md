@@ -48,9 +48,11 @@ Commands:
   int [digits]            generate pseudo-random integer. Length define max digits. If invalid then max is used as default. `kk int 5`
   time [format]           display current time using format (timestamp, iso8601). `kk time iso8601`
   base64 <action> <data>  encode/decode base64 text. `kk base64 encode text`
-  scan <host> <port>      network scan host and a command separated ports. `kk scan localhost 3000,3001`
-  c2c <filename>          Copy file to clipboard. `kk c2c filename`
-  pid <arg> [match_any]   Get pid info. Arg could be the program name or the pid number. If match_any is set then name match is not strict. `kk pid program_name` || `kk pid 12076`
-  kill <arg> [match_any]  Kill program. Arg could be the exact program name or the pid number. `kk kill program_name` || `kk kill 12076`
+  scan <host> <port>      network scan host and a comma separated ports. `kk scan localhost 3000,3001`
+  c2c <filename>          copy file to clipboard. `kk c2c filename`
+  pid <arg> [strict]      get pid info. arg could be the program name or the pid number. strict match the exact name (default true). `kk pid program_name` || `kk pid 12076`
+  pidport <port_number>   get pid info by port number. `kk pidport 8080`
+  kill <arg>              kill program. Arg could be the exact program name or the pid number. `kk kill program_name` || `kk kill 12076`
+  killport <port_number>  kill program by port number. `kk killport 8080`
   help [command]          display help for command
 ```

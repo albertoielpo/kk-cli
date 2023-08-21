@@ -1,21 +1,12 @@
 import { kill } from "process";
-import { PidInfoAction } from "./pid-info.action";
+import { PidInfo, PidInfoAction } from "./pid-info.action";
 
 /**
  * @author Alberto Ielpo
  */
 export class KillProgramAction extends PidInfoAction {
-    private static async killByPid(pid: number) {
-        const res = await PidInfoAction.findPid("pid", pid);
-        if (res.size === 0) {
-            return;
-        }
-        kill(pid);
-    }
-
-    private static async killByName(name: string) {
-        const res = await PidInfoAction.findPid("name", name, true);
-        if (res.size === 0) {
+    private static doKill(res: Map<string, PidInfo[]>) {
+        if (!res || res.size === 0) {
             return;
         }
         for (const entry of res.entries()) {
@@ -28,11 +19,17 @@ export class KillProgramAction extends PidInfoAction {
     }
 
     public static async kill(value: number | string) {
+        let res;
         const nValue = Number(value);
         if (isNaN(nValue)) {
-            await KillProgramAction.killByName(value as string);
+            res = await PidInfoAction.findPid("name", value, true);
         } else {
-            await KillProgramAction.killByPid(nValue);
+            res = await PidInfoAction.findPid("pid", nValue);
         }
+        KillProgramAction.doKill(res);
+    }
+
+    public static async killPort(value: number) {
+        KillProgramAction.doKill(await PidInfoAction.findPid("port", value));
     }
 }

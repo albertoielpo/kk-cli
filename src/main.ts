@@ -62,28 +62,38 @@ program
 program
     .command("scan <host> <port>")
     .description(
-        "network scan host and a command separated ports. `kk scan localhost 3000,3001`"
+        "network scan host and a comma separated ports. `kk scan localhost 3000,3001`"
     )
     .action(NetworkAction.scan);
 
 program
     .command("c2c <filename>")
-    .description("Copy file to clipboard. `kk c2c filename`")
+    .description("copy file to clipboard. `kk c2c filename`")
     .action(ClipboardAction.c2c);
 
 program
-    .command("pid <arg> [match_any]")
+    .command("pid <arg> [strict]")
     .description(
-        "Get pid info. Arg could be the program name or the pid number. If match_any is set then name match is not strict. `kk pid program_name` || `kk pid 12076`"
+        "get pid info. arg could be the program name or the pid number. strict match the exact name (default true). `kk pid program_name` || `kk pid 12076`"
     )
     .action(PidInfoAction.getInfo);
 
 program
+    .command("pidport <port_number>")
+    .description("get pid info by port number. `kk pidport 8080`")
+    .action(PidInfoAction.getInfoByPort);
+
+program
     .command("kill <arg>")
     .description(
-        "Kill program. Arg could be the exact program name or the pid number. `kk kill program_name` || `kk kill 12076`"
+        "kill program. Arg could be the exact program name or the pid number. `kk kill program_name` || `kk kill 12076`"
     )
     .action(KillProgramAction.kill);
+
+program
+    .command("killport <port_number>")
+    .description("kill program by port number. `kk killport 8080`")
+    .action(KillProgramAction.killPort);
 
 /** apply */
 program.version(VERSION).parse();

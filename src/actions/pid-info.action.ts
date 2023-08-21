@@ -4,7 +4,7 @@ const find = require("find-process");
  */
 export class PidInfoAction {
     protected static async findPid(
-        name: "name" | "pid",
+        name: "name" | "pid" | "port",
         value: string | number | RegExp,
         strict?: boolean
     ) {
@@ -25,20 +25,24 @@ export class PidInfoAction {
     }
 
     public static async getInfo(
-        value: string | number | RegExp,
-        matchAny?: boolean | string
+        value: string | number,
+        strict: string | boolean = true
     ) {
-        /** !matchAny == strict */
-        const strict = !matchAny || matchAny === "false";
+        /** strict is true by default */
+        const strictMode = !(strict === "false" || strict === false);
 
         const nValue = Number(value);
         if (isNaN(nValue)) {
             /** value is not a number then it's a name */
-            await PidInfoAction.findPid("name", value, strict);
+            await PidInfoAction.findPid("name", value, strictMode);
         } else {
             /** value is a pid number */
-            await PidInfoAction.findPid("pid", value, strict);
+            await PidInfoAction.findPid("pid", value, strictMode);
         }
+    }
+
+    public static async getInfoByPort(value: number) {
+        await PidInfoAction.findPid("port", value);
     }
 }
 
