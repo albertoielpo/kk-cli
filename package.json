@@ -1,6 +1,6 @@
 {
     "name": "@albertoielpo/kk-cli",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "description": "Typescript commander CLI",
     "main": "main.js",
     "bin": {
@@ -23,6 +23,7 @@
         "commander": "~11.0.0",
         "conf": "~11.0.2",
         "copy-paste": "~1.5.3",
+        "find-process": "~1.4.7",
         "mongoose": "~7.4.3",
         "portscanner": "~2.2.0"
     },

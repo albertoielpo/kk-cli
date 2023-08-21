@@ -2,13 +2,15 @@
 import * as chalk from "chalk";
 import { program } from "commander";
 import { ClipboardAction } from "./actions/clipboard.action";
+import { KillProgramAction } from "./actions/kill-program.action";
 import { NetworkAction } from "./actions/network.action";
+import { PidInfoAction } from "./actions/pid-info.action";
 import { RandomAction } from "./actions/random.action";
 import { TimeAction } from "./actions/time.action";
 import { TransformAction } from "./actions/transform.action";
 
 /** Same as package.json */
-const VERSION = "1.0.3";
+const VERSION = "1.0.4";
 
 /**
  * redirect console.warn and console.error to console.log colored with chalk
@@ -60,14 +62,38 @@ program
 program
     .command("scan <host> <port>")
     .description(
-        "network scan host and a command separated ports. `kk scan localhost 3000,3001`"
+        "availability check of host + port. port could be comma separated string. `kk scan localhost 3000,3001`"
     )
     .action(NetworkAction.scan);
 
 program
     .command("c2c <filename>")
-    .description("Copy file to clipboard")
+    .description("copy file to clipboard. `kk c2c filename`")
     .action(ClipboardAction.c2c);
+
+program
+    .command("pid <arg> [strict]")
+    .description(
+        "get pid info. arg could be the program name or the pid number. strict match the exact name (default true). `kk pid program_name` || `kk pid 12076`"
+    )
+    .action(PidInfoAction.getInfo);
+
+program
+    .command("pidport <port_number>")
+    .description("get pid info by port number. `kk pidport 8080`")
+    .action(PidInfoAction.getInfoByPort);
+
+program
+    .command("kill <arg>")
+    .description(
+        "kill program. Arg could be the exact program name or the pid number. `kk kill program_name` || `kk kill 12076`"
+    )
+    .action(KillProgramAction.kill);
+
+program
+    .command("killport <port_number>")
+    .description("kill program by port number. `kk killport 8080`")
+    .action(KillProgramAction.killPort);
 
 /** apply */
 program.version(VERSION).parse();

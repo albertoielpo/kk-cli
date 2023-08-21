@@ -11,7 +11,7 @@ export class ClipboardAction {
      * @param content
      * @returns
      */
-    public static copyToClipboard(content: string): Promise<void> {
+    private static copyToClipboard(content: string): Promise<void> {
         return new Promise<void>((resolve, reject) => {
             ncp.copy(content, function (err: unknown) {
                 if (err) {
