@@ -62,7 +62,7 @@ program
 program
     .command("scan <host> <port>")
     .description(
-        "network scan host and a comma separated ports. `kk scan localhost 3000,3001`"
+        "availability check of host + port. port could be comma separated string. `kk scan localhost 3000,3001`"
     )
     .action(NetworkAction.scan);
 
