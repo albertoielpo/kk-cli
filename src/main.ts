@@ -68,7 +68,9 @@ program
 
 program
     .command("c2c <filename>")
-    .description("copy file to clipboard. `kk c2c filename`")
+    .description(
+        "copy file to clipboard. `kk c2c filename`. requires: pbcopy/pbpaste (for OSX), xclip (for Linux, FreeBSD, and OpenBSD) or clip (for Windows)"
+    )
     .action(ClipboardAction.c2c);
 
 program
