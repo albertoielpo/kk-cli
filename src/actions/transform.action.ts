@@ -26,6 +26,11 @@ export class TransformAction {
         }
     }
 
+    /**
+     * Decodes a jwt token. Does not check if a jwt token is signed correctly
+     * @param token
+     * @returns
+     */
     public static jwtDecode(token: string) {
         const parts = token.split(".");
         if (parts.length !== 3) {
