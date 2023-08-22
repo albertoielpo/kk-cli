@@ -97,5 +97,10 @@ program
     .description("kill program by port number. `kk killport 8080`")
     .action(KillProgramAction.killPort);
 
+program
+    .command("jwtdecode <token>")
+    .description("decode a jwt token. `kk jwtdecode <token>`")
+    .action(TransformAction.jwtDecode);
+
 /** apply */
 program.version(VERSION).parse();
