@@ -6,15 +6,20 @@ export class PidInfoAction {
     protected static async findPid(
         name: "name" | "pid" | "port",
         value: string | number | RegExp,
-        strict?: boolean
+        strict: boolean,
+        shortMode?: boolean
     ) {
         const list: PidInfo[] = await find(name, value, strict);
-        const res = new Map<string, PidInfo[]>();
+        const res = new Map<string, PidInfo[] & number[]>();
         for (const cur of list) {
             if (!res.get(cur.name)) {
                 res.set(cur.name, []);
             }
-            res.get(cur.name)?.push(cur);
+            if (shortMode) {
+                res.get(cur.name)?.push(cur.pid);
+            } else {
+                res.get(cur.name)?.push(cur);
+            }
         }
         if (res.size === 0) {
             console.warn(`No running program found for ${name} ${value}`);
@@ -26,7 +31,8 @@ export class PidInfoAction {
 
     public static async getInfo(
         value: string | number,
-        strict: string | boolean = true
+        strict: string | boolean = true,
+        options?: { short: boolean }
     ) {
         /** strict is true by default */
         const strictMode = !(strict === "false" || strict === false);
@@ -34,15 +40,28 @@ export class PidInfoAction {
         const nValue = Number(value);
         if (isNaN(nValue)) {
             /** value is not a number then it's a name */
-            await PidInfoAction.findPid("name", value, strictMode);
+            await PidInfoAction.findPid(
+                "name",
+                value,
+                strictMode,
+                options?.short
+            );
         } else {
             /** value is a pid number */
-            await PidInfoAction.findPid("pid", value, strictMode);
+            await PidInfoAction.findPid(
+                "pid",
+                value,
+                strictMode,
+                options?.short
+            );
         }
     }
 
-    public static async getInfoByPort(value: number) {
-        await PidInfoAction.findPid("port", value);
+    public static async getInfoByPort(
+        value: number,
+        options?: { short: boolean }
+    ) {
+        await PidInfoAction.findPid("port", value, true, options?.short);
     }
 }
 

@@ -78,11 +78,13 @@ program
     .description(
         "get pid info. arg could be the program name or the pid number. strict match the exact name (default true). `kk pid program_name` || `kk pid 12076`"
     )
+    .option("-s, --short", "compact print")
     .action(PidInfoAction.getInfo);
 
 program
     .command("pidport <port_number>")
     .description("get pid info by port number. `kk pidport 8080`")
+    .option("-s, --short", "compact print")
     .action(PidInfoAction.getInfoByPort);
 
 program
