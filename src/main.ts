@@ -104,7 +104,9 @@ program
 
 program
     .command("jwtdecode <token>")
-    .description("decode a jwt token. `kk jwtdecode <token>`")
+    .description(
+        "decode a jwt token. does not check if a token is valid just decode the two main parts. `kk jwtdecode <token>`"
+    )
     .action(TransformAction.jwtDecode);
 
 /** apply */

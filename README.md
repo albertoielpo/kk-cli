@@ -54,6 +54,6 @@ Commands:
   pidport [options] <port_number>  get pid info by port number. `kk pidport -h` || `kk pidport 8080`
   kill <arg>                       kill program. Arg could be the exact program name or the pid number. `kk kill program_name` || `kk kill 12076`
   killport <port_number>           kill program by port number. `kk killport 8080`
-  jwtdecode <token>                decode a jwt token. `kk jwtdecode <token>`
+  jwtdecode <token>                decode a jwt token. does not check if a token is valid just decode the two main parts. `kk jwtdecode <token>`
   help [command]                   display help for command
 ```
