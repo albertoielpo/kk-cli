@@ -7,7 +7,7 @@
         "kk": "dist/main.js"
     },
     "scripts": {
-        "build": "tsc",
+        "build": "tsc && chmod +x dist/main.js",
         "watch": "tsc -w",
         "format": "prettier --write \"src/**/*.ts\"",
         "test": "jest"

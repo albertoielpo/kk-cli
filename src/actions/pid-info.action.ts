@@ -32,10 +32,14 @@ export class PidInfoAction {
     public static async getInfo(
         value: string | number,
         strict: string | boolean = true,
-        options?: { short: boolean }
+        options?: GetInfoOptions
     ) {
         /** strict is true by default */
-        const strictMode = !(strict === "false" || strict === false);
+        let strictMode = !(strict === "false" || strict === false);
+        if (!!options?.disableStrict) {
+            /** disable strict mode if the option is passed */
+            strictMode = false;
+        }
 
         const nValue = Number(value);
         if (isNaN(nValue)) {
@@ -57,10 +61,7 @@ export class PidInfoAction {
         }
     }
 
-    public static async getInfoByPort(
-        value: number,
-        options?: { short: boolean }
-    ) {
+    public static async getInfoByPort(value: number, options?: GetInfoOptions) {
         await PidInfoAction.findPid("port", value, true, options?.short);
     }
 }
@@ -73,4 +74,9 @@ export type PidInfo = {
     name: string;
     cmd: string;
     bin?: string;
+};
+
+type GetInfoOptions = {
+    short?: boolean;
+    disableStrict?: boolean;
 };

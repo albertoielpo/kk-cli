@@ -76,14 +76,17 @@ program
 program
     .command("pid <arg> [strict]")
     .description(
-        "get pid info. arg could be the program name or the pid number. strict match the exact name (default true). `kk pid program_name` || `kk pid 12076`"
+        "get pid info. arg could be the program name or the pid number. `kk pid -h` || `kk pid <program_name>` || `kk pid <12076>` || `kk pid <program_name> -s` || `kk pid <program_name> -s -d`"
     )
     .option("-s, --short", "compact print")
+    .option("-d, --disable-strict", "disable strict mode")
     .action(PidInfoAction.getInfo);
 
 program
     .command("pidport <port_number>")
-    .description("get pid info by port number. `kk pidport 8080`")
+    .description(
+        "get pid info by port number. `kk pidport -h` || `kk pidport 8080`"
+    )
     .option("-s, --short", "compact print")
     .action(PidInfoAction.getInfoByPort);
 
