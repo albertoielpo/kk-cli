@@ -1,13 +1,13 @@
 {
     "name": "@albertoielpo/kk-cli",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "description": "Typescript commander CLI",
     "main": "main.js",
     "bin": {
         "kk": "dist/main.js"
     },
     "scripts": {
-        "build": "tsc",
+        "build": "tsc && chmod +x dist/main.js",
         "watch": "tsc -w",
         "format": "prettier --write \"src/**/*.ts\"",
         "test": "jest"

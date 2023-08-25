@@ -24,12 +24,14 @@ export class KillProgramAction extends PidInfoAction {
         if (isNaN(nValue)) {
             res = await PidInfoAction.findPid("name", value, true);
         } else {
-            res = await PidInfoAction.findPid("pid", nValue);
+            res = await PidInfoAction.findPid("pid", nValue, true);
         }
         KillProgramAction.doKill(res);
     }
 
     public static async killPort(value: number) {
-        KillProgramAction.doKill(await PidInfoAction.findPid("port", value));
+        KillProgramAction.doKill(
+            await PidInfoAction.findPid("port", value, true)
+        );
     }
 }

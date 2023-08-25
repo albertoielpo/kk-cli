@@ -25,4 +25,20 @@ export class TransformAction {
                 break;
         }
     }
+
+    /**
+     * Decodes a jwt token. Does not check if a jwt token is signed correctly
+     * @param token
+     * @returns
+     */
+    public static jwtDecode(token: string) {
+        const parts = token.split(".");
+        if (parts.length !== 3) {
+            console.warn("Invalid jwt token");
+            return;
+        }
+
+        console.log(Buffer.from(parts[0], "base64").toString("utf-8"));
+        console.log(Buffer.from(parts[1], "base64").toString("utf-8"));
+    }
 }

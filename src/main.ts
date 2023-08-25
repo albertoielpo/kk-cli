@@ -10,7 +10,7 @@ import { TimeAction } from "./actions/time.action";
 import { TransformAction } from "./actions/transform.action";
 
 /** Same as package.json */
-const VERSION = "1.0.4";
+const VERSION = "1.0.5";
 
 /**
  * redirect console.warn and console.error to console.log colored with chalk
@@ -76,13 +76,18 @@ program
 program
     .command("pid <arg> [strict]")
     .description(
-        "get pid info. arg could be the program name or the pid number. strict match the exact name (default true). `kk pid program_name` || `kk pid 12076`"
+        "get pid info. arg could be the program name or the pid number. `kk pid -h` || `kk pid <program_name>` || `kk pid <12076>` || `kk pid <program_name> -s` || `kk pid <program_name> -s -d`"
     )
+    .option("-s, --short", "compact print")
+    .option("-d, --disable-strict", "disable strict mode")
     .action(PidInfoAction.getInfo);
 
 program
     .command("pidport <port_number>")
-    .description("get pid info by port number. `kk pidport 8080`")
+    .description(
+        "get pid info by port number. `kk pidport -h` || `kk pidport 8080`"
+    )
+    .option("-s, --short", "compact print")
     .action(PidInfoAction.getInfoByPort);
 
 program
@@ -96,6 +101,13 @@ program
     .command("killport <port_number>")
     .description("kill program by port number. `kk killport 8080`")
     .action(KillProgramAction.killPort);
+
+program
+    .command("jwtdecode <token>")
+    .description(
+        "decode a jwt token. does not check if a token is valid just decode the two main parts. `kk jwtdecode <token>`"
+    )
+    .action(TransformAction.jwtDecode);
 
 /** apply */
 program.version(VERSION).parse();
