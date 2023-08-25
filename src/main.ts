@@ -10,7 +10,7 @@ import { TimeAction } from "./actions/time.action";
 import { TransformAction } from "./actions/transform.action";
 
 /** Same as package.json */
-const VERSION = "1.0.5";
+const VERSION = "1.0.6";
 
 /**
  * redirect console.warn and console.error to console.log colored with chalk
