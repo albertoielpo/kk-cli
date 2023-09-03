@@ -55,5 +55,6 @@ Commands:
   kill <arg>                       kill program. Arg could be the exact program name or the pid number. `kk kill program_name` || `kk kill 12076`
   killport <port_number>           kill program by port number. `kk killport 8080`
   jwtdecode <token>                decode a jwt token. does not check if a token is valid just decode the two main parts. `kk jwtdecode <token>`
+  pwd [options] [passphrase]       generate password. `kk pwd [passphrase] -s <seed>` `kk pwd -r`. If passphrase is used the strenght of the password depends on passphrase. An additional seed is used to enforce security. If no passphrase is set the random flag should be set.
   help [command]                   display help for command
 ```

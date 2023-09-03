@@ -76,9 +76,9 @@ export class PasswordGeneratorAction {
      * If passphrase is used kk pwd passphrase the strenght of the password depends on passphrase. An additional seed is used to enforce security
      * If no passphrase is set the random flag should be set
      *
-     * With no length maximum security
-     * With length == 5 is detected 1 collision every 1_000
-     * With length == 8, 1 collision every 100_000
+     * With no length, no collection were detected in 1_000_000 test cases
+     * With length == 5, detected 1 collision every 1_000
+     * With length == 8, detected 1 collision every 100_000
      *
      * @param passphrase
      * @param options
