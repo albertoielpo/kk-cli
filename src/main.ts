@@ -4,6 +4,7 @@ import { program } from "commander";
 import { ClipboardAction } from "./actions/clipboard.action";
 import { KillProgramAction } from "./actions/kill-program.action";
 import { NetworkAction } from "./actions/network.action";
+import { PasswordGeneratorAction } from "./actions/password-generator.action";
 import { PidInfoAction } from "./actions/pid-info.action";
 import { RandomAction } from "./actions/random.action";
 import { TimeAction } from "./actions/time.action";
@@ -108,6 +109,17 @@ program
         "decode a jwt token. does not check if a token is valid just decode the two main parts. `kk jwtdecode <token>`"
     )
     .action(TransformAction.jwtDecode);
+
+program
+    .command("pwd [passphrase]")
+    .description(
+        "generate password. `kk pwd [passphrase] -s <seed>` `kk pwd -r`. If passphrase is used the strenght of the password depends on passphrase. An additional seed is used to enforce security. If no passphrase is set the random flag should be set."
+    )
+    .option("-r, --random", "generate random password")
+    .option("-l, --length <length>", "fixed length of random password")
+    .option("-s, --seed <seed>", "passphrase seed")
+    .option("-v, --version [version]", "password version algorithm")
+    .action(PasswordGeneratorAction.generate);
 
 /** apply */
 program.version(VERSION).parse();
