@@ -23,7 +23,7 @@ describe("password-generator.action", () => {
     });
 
     it("should not have collision in sequential generation", () => {
-        const TEST_CASES = 10_000; //works also with 1_000_000 but it tooks 94732 ms so... :)
+        const TEST_CASES = 10_000; //it works also with 1_000_000 but it tooks 94732 ms so... :)
         for (let ii = 0; ii < TEST_CASES; ii++) {
             PasswordGeneratorAction.generate(undefined, { random: true });
         }
