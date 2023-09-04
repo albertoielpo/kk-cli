@@ -70,7 +70,6 @@ Commands:
                                       -l, --length <length>    fixed length of random password
                                       -s, --seed <seed>        passphrase seed
                                       -v, --version [version]  password version algorithm
-                                      -h, --help               display help for command
 
   help [command]                   display help for command
 ```
