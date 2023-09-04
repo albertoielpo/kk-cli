@@ -11,7 +11,15 @@ export class NetworkAction {
      * @param commaSeparatedPorts
      */
     public static async scan(host: string, commaSeparatedPorts: string) {
-        const ports = commaSeparatedPorts.split(","); //comma separated ports
+        if (!commaSeparatedPorts) {
+            console.error("Port not valid");
+            return;
+        }
+        const ports = commaSeparatedPorts
+            .replace(/\s/g, "")
+            .split(",")
+            .filter((x) => Boolean(x)); //only valid results
+
         const statusPromises = [];
         for (const port of ports) {
             statusPromises.push(checkPortStatus(Number(port), host));
@@ -29,7 +37,7 @@ export class NetworkAction {
                         console.log(`${host}:${ports[idx]} is available`);
                         break;
                     default:
-                        console.error("${host}:${ports[idx]} invalid status");
+                        console.error(`${host}:${ports[idx]} invalid status`);
                         break;
                 }
             } else {
