@@ -17,14 +17,14 @@
         "commander"
     ],
     "author": "Alberto Ielpo",
-    "license": "ISC",
+    "license": "MIT",
     "dependencies": {
         "chalk": "~4.1.2",
         "commander": "~11.0.0",
         "conf": "~11.0.2",
         "copy-paste": "~1.5.3",
         "find-process": "~1.4.7",
-        "mongoose": "~7.5.0",
+        "mongoose": "~8.8.1",
         "portscanner": "~2.2.0"
     },
     "devDependencies": {

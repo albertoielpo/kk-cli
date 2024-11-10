@@ -6,7 +6,7 @@
     "prettier.useTabs": false,
     "prettier.configPath": ".prettierrc",
     "editor.codeActionsOnSave": {
-        "source.organizeImports": true
+        "source.organizeImports": "explicit"
     },
     "typescript.preferences.importModuleSpecifier": "relative"
 }
