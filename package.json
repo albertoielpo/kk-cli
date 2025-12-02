@@ -24,7 +24,7 @@
         "conf": "~11.0.2",
         "copy-paste": "~1.5.3",
         "find-process": "~1.4.7",
-        "mongoose": "~8.8.1",
+        "mongoose": "~9.0.0",
         "portscanner": "~2.2.0"
     },
     "devDependencies": {
