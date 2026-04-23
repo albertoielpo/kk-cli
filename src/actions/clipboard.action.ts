@@ -23,19 +23,38 @@ export class ClipboardAction {
         return new Promise<void>((resolve, reject) => {
             const { command, args } = getClipboardCommand();
             const child = spawn(command, args);
+            let settled = false;
+            const done = (err?: Error) => {
+                if (settled) return;
+                settled = true;
+                if (err) {
+                    console.error(
+                        "Requires: pbcopy (macOS), wl-copy (Wayland), xclip (X11), or clip (Windows)"
+                    );
+                    reject(err);
+                } else {
+                    resolve();
+                }
+            };
 
-            child.on("error", (err) => {
-                console.error(
-                    "Requires: pbcopy (macOS), wl-copy (Wayland), xclip (X11), or clip (Windows)"
-                );
-                reject(err);
+            const stderrChunks: Buffer[] = [];
+            child.stderr.on("data", (chunk: Buffer) =>
+                stderrChunks.push(chunk)
+            );
+            child.stderr.on("end", () => {
+                if (stderrChunks.length > 0)
+                    done(
+                        new Error(
+                            Buffer.concat(stderrChunks as any).toString("utf8")
+                        )
+                    );
             });
 
-            child.stdin.end(content, "utf8");
-            child.on("close", (code) => {
-                if (code === 0) resolve();
-                else reject(new Error(`${command} exited with code ${code}`));
-            });
+            child.stdin.on("error", done);
+            child.on("error", done);
+            child.on("exit", () => done());
+
+            child.stdin.end(Buffer.from(content, "utf8"));
         });
     }
 
