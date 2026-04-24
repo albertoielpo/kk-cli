@@ -15,6 +15,7 @@
         "skipLibCheck": true,
         "forceConsistentCasingInFileNames": false,
         "noFallthroughCasesInSwitch": false,
-        "resolveJsonModule": true
+        "resolveJsonModule": true,
+        "types": ["node", "jest"]
     }
 }
