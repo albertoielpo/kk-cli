@@ -1,60 +1,28 @@
 /**
  * @author Alberto Ielpo
  */
-import { spawn } from "child_process";
+const ncp = require("copy-paste");
 import { promises } from "fs";
 
-function getClipboardCommand(): { command: string; args: string[] } {
-    switch (process.platform) {
-        case "darwin":
-            return { command: "pbcopy", args: [] };
-        case "win32":
-            return { command: "clip", args: [] };
-        default:
-            if (process.env.WAYLAND_DISPLAY) {
-                return { command: "wl-copy", args: [] };
-            }
-            return { command: "xclip", args: ["-selection", "clipboard"] };
-    }
-}
-
 export class ClipboardAction {
+    /**
+     * Copy string content to clipboard
+     *
+     * @param content
+     * @returns
+     */
     private static copyToClipboard(content: string): Promise<void> {
         return new Promise<void>((resolve, reject) => {
-            const { command, args } = getClipboardCommand();
-            const child = spawn(command, args);
-            let settled = false;
-            const done = (err?: Error) => {
-                if (settled) return;
-                settled = true;
+            ncp.copy(content, function (err: unknown) {
                 if (err) {
                     console.error(
-                        "Requires: pbcopy (macOS), wl-copy (Wayland), xclip (X11), or clip (Windows)"
+                        "Requires: pbcopy/pbpaste (for OSX), xclip,wl-clipboard (for Linux, FreeBSD, and OpenBSD) or clip (for Windows)"
                     );
                     reject(err);
-                } else {
-                    resolve();
+                    return;
                 }
-            };
-
-            const stderrChunks: Buffer[] = [];
-            child.stderr.on("data", (chunk: Buffer) =>
-                stderrChunks.push(chunk)
-            );
-            child.stderr.on("end", () => {
-                if (stderrChunks.length > 0)
-                    done(
-                        new Error(
-                            Buffer.concat(stderrChunks as any).toString("utf8")
-                        )
-                    );
+                resolve();
             });
-
-            child.stdin.on("error", done);
-            child.on("error", done);
-            child.on("exit", () => done());
-
-            child.stdin.end(Buffer.from(content, "utf8"));
         });
     }
 
